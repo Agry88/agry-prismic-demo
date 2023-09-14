@@ -148,6 +148,61 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 export type AllDocumentTypes = NewcustompageDocument | PageDocument;
 
 /**
+ * Primary content in *CusotomCoponent → Primary*
+ */
+export interface CusotomCoponentSliceDefaultPrimary {
+	/**
+	 * title field in *CusotomCoponent → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cusotom_coponent.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * image field in *CusotomCoponent → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cusotom_coponent.primary.image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for CusotomCoponent Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CusotomCoponentSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<CusotomCoponentSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *CusotomCoponent*
+ */
+type CusotomCoponentSliceVariation = CusotomCoponentSliceDefault;
+
+/**
+ * CusotomCoponent Shared Slice
+ *
+ * - **API ID**: `cusotom_coponent`
+ * - **Description**: CusotomCoponent
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CusotomCoponentSlice = prismic.SharedSlice<
+	'cusotom_coponent',
+	CusotomCoponentSliceVariation
+>;
+
+/**
  * Primary content in *NewCustomSlice → Primary*
  */
 export interface NewCustomSliceSliceDefaultPrimary {
@@ -276,6 +331,10 @@ declare module '@prismicio/client' {
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
 			AllDocumentTypes,
+			CusotomCoponentSlice,
+			CusotomCoponentSliceDefaultPrimary,
+			CusotomCoponentSliceVariation,
+			CusotomCoponentSliceDefault,
 			NewCustomSliceSlice,
 			NewCustomSliceSliceDefaultPrimary,
 			NewCustomSliceSliceDefaultItem,
