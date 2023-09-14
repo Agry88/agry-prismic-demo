@@ -3,6 +3,26 @@
 	export let slice;
 </script>
 
-<section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-	Placeholder component for {slice.slice_type} (variation: {slice.variation}) Slices
-</section>
+{#if slice.variation === 'default'}
+	<div>
+		<h1>{slice.primary.text}</h1>
+		<img class="img" src={slice.primary.image.url} alt={slice.primary.image.alt} />
+		<ul>
+			{#each slice.items as item}
+				<li>{item.selectlabel}</li>
+			{/each}
+		</ul>
+	</div>
+{/if}
+
+<style lang="scss">
+	.img {
+		width: 100px;
+		height: 100px;
+
+		&:hover {
+			width: 200px;
+			height: 200px;
+		}
+	}
+</style>

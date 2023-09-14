@@ -1,16 +1,42 @@
 {
-	"id": "new_custom_slice",
-	"type": "SharedSlice",
-	"name": "NewCustomSlice",
-	"description": "NewCustomSlice",
-	"variations": [
-		{
-			"id": "default",
-			"name": "Default",
-			"docURL": "...",
-			"version": "initial",
-			"description": "Default",
-			"imageUrl": ""
-		}
-	]
+  "id": "new_custom_slice",
+  "type": "SharedSlice",
+  "name": "NewCustomSlice",
+  "description": "NewCustomSlice",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "text": {
+          "type": "Text",
+          "config": {
+            "label": "text",
+            "placeholder": ""
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {
+        "selectlabel": {
+          "type": "Text",
+          "config": {
+            "label": "selectLabel",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
 }

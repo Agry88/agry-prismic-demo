@@ -148,6 +148,46 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 export type AllDocumentTypes = NewcustompageDocument | PageDocument;
 
 /**
+ * Primary content in *NewCustomSlice → Primary*
+ */
+export interface NewCustomSliceSliceDefaultPrimary {
+	/**
+	 * text field in *NewCustomSlice → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: new_custom_slice.primary.text
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	text: prismic.KeyTextField;
+
+	/**
+	 * image field in *NewCustomSlice → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: new_custom_slice.primary.image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *NewCustomSlice → Items*
+ */
+export interface NewCustomSliceSliceDefaultItem {
+	/**
+	 * selectLabel field in *NewCustomSlice → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: new_custom_slice.items[].selectlabel
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	selectlabel: prismic.KeyTextField;
+}
+
+/**
  * Default variation for NewCustomSlice Slice
  *
  * - **API ID**: `default`
@@ -156,8 +196,8 @@ export type AllDocumentTypes = NewcustompageDocument | PageDocument;
  */
 export type NewCustomSliceSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
-	never
+	Simplify<NewCustomSliceSliceDefaultPrimary>,
+	Simplify<NewCustomSliceSliceDefaultItem>
 >;
 
 /**
@@ -237,6 +277,8 @@ declare module '@prismicio/client' {
 			PageDocumentDataSlicesSlice,
 			AllDocumentTypes,
 			NewCustomSliceSlice,
+			NewCustomSliceSliceDefaultPrimary,
+			NewCustomSliceSliceDefaultItem,
 			NewCustomSliceSliceVariation,
 			NewCustomSliceSliceDefault,
 			RichTextSlice,
